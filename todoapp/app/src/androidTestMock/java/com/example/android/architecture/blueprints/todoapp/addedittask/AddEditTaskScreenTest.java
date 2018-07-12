@@ -35,6 +35,7 @@ import com.example.android.architecture.blueprints.todoapp.data.FakeTasksRemoteD
 import com.example.android.architecture.blueprints.todoapp.data.Task;
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository;
 import com.example.android.architecture.blueprints.todoapp.util.EspressoIdlingResource;
+import com.example.android.architecture.blueprints.todoapp.util.TimeUtil;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -126,7 +127,7 @@ public class AddEditTaskScreenTest {
     public void toolbarTitle_editTask_persistsRotation() {
         // Put a task in the repository and start the activity to edit it
         TasksRepository.destroyInstance();
-        FakeTasksRemoteDataSource.getInstance().addTasks(new Task("Title1", "", TASK_ID, false));
+        FakeTasksRemoteDataSource.getInstance().addTasks(new Task("Title1", "", TASK_ID, false, TimeUtil.getCurrentSystemTime( TimeUtil.yyyy_MM_dd_HH_mm_ss )));
         launchNewTaskActivity(TASK_ID);
 
         // Check that the toolbar shows the correct title

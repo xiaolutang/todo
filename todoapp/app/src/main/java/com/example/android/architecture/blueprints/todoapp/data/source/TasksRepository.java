@@ -253,7 +253,8 @@ public class TasksRepository implements TasksDataSource {
 
     @Override
     public void refreshTasks() {
-        mCacheIsDirty = true;
+        //没有远程数据直接返回false
+        mCacheIsDirty = false;
     }
 
     @Override

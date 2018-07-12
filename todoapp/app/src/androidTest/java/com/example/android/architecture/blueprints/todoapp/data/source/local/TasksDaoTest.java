@@ -25,6 +25,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.android.architecture.blueprints.todoapp.data.Task;
+import com.example.android.architecture.blueprints.todoapp.util.TimeUtil;
 
 import org.junit.After;
 import org.junit.Before;
@@ -36,7 +37,7 @@ import java.util.List;
 @RunWith(AndroidJUnit4.class)
 public class TasksDaoTest {
 
-    private static final Task TASK = new Task("title", "description", "id", true);
+    private static final Task TASK = new Task("title", "description", "id", true,TimeUtil.getCurrentSystemTime( TimeUtil.yyyy_MM_dd_HH_mm_ss ));
 
     private ToDoDatabase mDatabase;
 
@@ -71,7 +72,7 @@ public class TasksDaoTest {
         mDatabase.taskDao().insertTask(TASK);
 
         // When a task with the same id is inserted
-        Task newTask = new Task("title2", "description2", "id", true);
+        Task newTask = new Task("title2", "description2", "id", true, TimeUtil.getCurrentSystemTime( TimeUtil.yyyy_MM_dd_HH_mm_ss ));
         mDatabase.taskDao().insertTask(newTask);
         // When getting the task by id from the database
         Task loaded = mDatabase.taskDao().getTaskById(TASK.getId());
@@ -100,7 +101,7 @@ public class TasksDaoTest {
         mDatabase.taskDao().insertTask(TASK);
 
         // When the task is updated
-        Task updatedTask = new Task("title2", "description2", "id", true);
+        Task updatedTask = new Task("title2", "description2", "id", true,TimeUtil.getCurrentSystemTime( TimeUtil.yyyy_MM_dd_HH_mm_ss ));
         mDatabase.taskDao().updateTask(updatedTask);
 
         // When getting the task by id from the database

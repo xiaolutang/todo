@@ -163,6 +163,7 @@ public class TasksFragment extends Fragment implements TasksContract.View {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_clear:
+                // FIXME: 2018/7/12 屏蔽清除完成的应用
                 mPresenter.clearCompletedTasks();
                 break;
             case R.id.menu_filter:
